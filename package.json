@@ -1,0 +1,15 @@
+{
+  "name": "rocks-service",
+  "version": "1.0.0",
+  "description": "Sample group subscription matching service",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "body-parser": "^1.20.2"
+  },
+  "type": "module"
+}
