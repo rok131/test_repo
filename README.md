@@ -7,6 +7,11 @@ This repository contains a small prototype for a group subscription matching ser
 - Listing parties and joining an existing party
 
 The server stores data in memory and is intended for demonstration purposes only.
+Additional sample features include:
+
+- Updating a user's profile
+- Simple wallet deposit handling
+- Tracking party membership history
 
 ## Requirements
 

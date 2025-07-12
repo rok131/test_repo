@@ -38,12 +38,19 @@ function request(method, path, data, token) {
     assert.strictEqual(res.status, 200);
     const token = res.body.token;
 
+    res = await request('POST', '/deposit', { amount: 20 }, token);
+    assert.strictEqual(res.status, 200);
+
     res = await request('POST', '/party', { name: 'Test Party', serviceName: 'Netflix', deposit: 10 }, token);
     assert.strictEqual(res.status, 200);
     const partyId = res.body.id;
 
     res = await request('POST', `/party/${partyId}/join`, null, token);
     assert.strictEqual(res.status, 200);
+
+    res = await request('GET', '/me', null, token);
+    assert.strictEqual(res.status, 200);
+    assert.strictEqual(res.body.balance, 10);
 
     res = await request('GET', '/parties');
     assert.strictEqual(res.status, 200);

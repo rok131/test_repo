@@ -4,14 +4,21 @@ import { store } from '../data/store.js';
 const router = Router();
 
 router.post('/register', (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, nickname, image } = req.body;
   if (!email || !password) {
     return res.status(400).json({ error: 'Missing fields' });
   }
   if (store.users.find(u => u.email === email)) {
     return res.status(400).json({ error: 'Email exists' });
   }
-  const user = { id: store.nextUserId++, email, password };
+  const user = {
+    id: store.nextUserId++,
+    email,
+    password,
+    profile: { nickname: nickname || '', image: image || '' },
+    balance: 0,
+    history: []
+  };
   store.users.push(user);
   res.json({ id: user.id, email: user.email });
 });
